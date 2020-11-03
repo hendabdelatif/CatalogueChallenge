@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Catalogue Challenge</string>
+    <string name="product_catalogue">Products Catalogue</string>
+    <string name="product_details">Product Details</string>
+    <string name="price">Price:</string>
+</resources>

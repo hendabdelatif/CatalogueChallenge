@@ -1,0 +1,29 @@
+package com.hend.cataloguechallenge.di
+
+import com.hend.cataloguechallenge.network.NetworkHelper
+import com.hend.cataloguechallenge.network.api.categories.CategoriesListService
+import com.hend.cataloguechallenge.persistance.dao.CategoryDao
+import com.hend.cataloguechallenge.repository.CatalogueRepository
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityRetainedComponent
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+
+/**
+ * Module that provides an instance of the Repository
+ */
+@ExperimentalCoroutinesApi
+@Module
+@InstallIn(ActivityRetainedComponent::class)
+object RepositoryModule {
+
+    @Provides
+    @ActivityRetainedScoped
+    fun provideCategoriesListRepository(networkHelper: NetworkHelper,
+        categoriesListService: CategoriesListService,
+        categoryDao: CategoryDao): CatalogueRepository {
+        return CatalogueRepository(networkHelper, categoriesListService, categoryDao)
+    }
+}
